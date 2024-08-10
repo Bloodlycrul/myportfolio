@@ -1,5 +1,5 @@
 import React from "react";
-import { Orbitron } from "@next/font/google";
+import { Orbitron } from "next/font/google";
 import SocialSharing from "./SocialSharing";
 
 const orbit = Orbitron({

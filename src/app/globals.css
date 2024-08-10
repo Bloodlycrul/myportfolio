@@ -32,13 +32,16 @@
   }
 
   .border-border {
-
   }
 
   .bg-background {
   }
 
   .text-foreground {
+  }
+
+  .blackWhite {
+    filter: grayscale();
   }
 
   .dark {

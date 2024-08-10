@@ -1,5 +1,5 @@
 import React from "react";
-import { Orbitron } from "@next/font/google";
+import { Orbitron } from "next/font/google";
 import { FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
 import { GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";

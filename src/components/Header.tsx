@@ -1,5 +1,5 @@
 import React from "react";
-import { Wallpoet, Orbitron } from "@next/font/google";
+import { Wallpoet, Orbitron } from "next/font/google";
 import { menu } from "@/app/utils/constant";
 import Link from "next/link";
 

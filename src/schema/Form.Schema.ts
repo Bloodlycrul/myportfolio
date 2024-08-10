@@ -1,4 +1,3 @@
-import { query } from "express";
 import z from "zod";
 
 export const contact = z.object({
