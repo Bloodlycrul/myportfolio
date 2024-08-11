@@ -49,24 +49,24 @@ const About = () => {
           you will join me on this journey and witness my growth.
         </div>
       </div>
-      <div className="flex gap-3 mt-10">
+      <div className="flex gap-3 mt-10 w-full flex-wrap">
         {/* Social media Share Link */}
         <Link href={"https://www.linkedin.com/in/gaurav-rana-735006264/"}>
-          <div className="flex items-center gap-1 border-2 border-black  p-4 rounded-xl ">
+          <div className="flex  md:w-full items-center gap-1 border-2 border-black  p-4 rounded-xl ">
             <FaLinkedin />
             Linkedln
             <GoArrowUpRight />
           </div>
         </Link>
         <Link href={"https://github.com/Bloodlycrul"}>
-          <div className="flex items-center gap-1 border-2 border-black p-4 rounded-xl">
+          <div className="flex 	md:w-full items-center gap-1 border-2 border-black p-4 rounded-xl">
             <FaGithub />
             Github
             <GoArrowUpRight />
           </div>
         </Link>
         <Link href={"https://www.instagram.com/gaurav_rana_08/"}>
-          <div className="flex items-center gap-1 border-2 border-black p-4 rounded-xl">
+          <div className="flex 	md:w-full items-center gap-1 border-2 border-black p-4 rounded-xl">
             <FaInstagramSquare />
             Instagram
             <GoArrowUpRight />

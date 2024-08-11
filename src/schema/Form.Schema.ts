@@ -1,8 +1,8 @@
 import z from "zod";
 
 export const contact = z.object({
-  name: z.string(),
+  firstname: z.string({ message: "This should not be blank" }),
+  lastname: z.string({ message: "This should not be blank" }),
   email: z.string().email({ message: "Invalid email Address" }),
-  query: z.string(),
-  query_Description: z.string(),
+  query_Description: z.string({ message: "This should not be blank" }),
 });

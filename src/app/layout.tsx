@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import Header from "@/components/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +25,17 @@ export default function RootLayout({
         <main className="px-7 md:w-[45%] m-auto mt-20 md:flex">
           <Header />
           {children}
+          <div className="absolute right-1 top-2">
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              theme="light"
+            />
+          </div>
         </main>
       </body>
     </html>

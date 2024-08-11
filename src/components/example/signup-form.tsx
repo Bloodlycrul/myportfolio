@@ -1,12 +1,60 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
+import { Bounce, toast } from "react-toastify";
+import { main } from "@/app/utils/nodemailer/mailer";
+import { EmailTemplate } from "../email-template";
 
 export default function SignupForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [userForm, setUserForm] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    query: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (
+      !userForm.firstname ||
+      !userForm.lastname ||
+      !userForm.email ||
+      !userForm.query
+    ) {
+      return toast.error("Please mention all the requried ", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    }
+
+    await fetch("/api/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName: userForm.firstname,
+        email: userForm.email,
+      }),
+    });
+
+    toast.success("Huray Your form is submitted", {
+      theme: "dark",
+    });
+    setUserForm({ firstname: "", lastname: "", email: "", query: "" });
   };
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
@@ -14,20 +62,49 @@ export default function SignupForm() {
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" />
+            <Input
+              onChange={handleChange}
+              name="firstname"
+              id="firstname"
+              placeholder="Tyler"
+              type="text"
+              value={userForm.firstname}
+            />
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Durden" type="text" />
+            <Input
+              onChange={handleChange}
+              name="lastname"
+              id="lastname"
+              placeholder="Durden"
+              type="text"
+              value={userForm.lastname}
+            />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+          <Input
+            onChange={handleChange}
+            name="email"
+            id="email"
+            placeholder="projectmayhem@fc.com"
+            type="email"
+            value={userForm.email}
+          />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="Message" type="text" />
+          <Label htmlFor="password">Your Query</Label>
+          <Input
+            onChange={handleChange}
+            id="password"
+            placeholder="Message"
+            name="query"
+            type="text"
+            className="h-20 text-start"
+            value={userForm.query}
+          />
         </LabelInputContainer>
 
         <button
