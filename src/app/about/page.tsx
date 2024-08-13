@@ -1,13 +1,19 @@
 import React from "react";
 import { Orbitron } from "next/font/google";
-import { FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
 import { GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";
+import { FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
+import { Metadata } from "next";
 
 const orbit = Orbitron({
   weight: ["400", "600"],
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Welcome to the About Us page of the Gaurav Rana",
+};
 const About = () => {
   return (
     <div className="mt-8 md:mt- md:ml-36">

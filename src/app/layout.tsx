@@ -2,15 +2,19 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import Header from "@/components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+import Header from "@/components/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Full Stack Web Developer | Gaurav Rana - RANA IT Consultant",
+  title: {
+    template: "%s | Rana It Consultant",
+    default: "Full Stack Web Developer | Rana It Consultant ",
+  },
   description:
     "Explore the portfolio of Gaurav Rana, a passionate Full Stack Web Developer with expertise in HTML, CSS, JavaScript, React, Node.js, and more. Discover dynamic, responsive web applications crafted with dedication to continuous learning and innovation",
 };
@@ -34,10 +38,11 @@ export default function RootLayout({
               newestOnTop={false}
               closeOnClick
               rtl={false}
-              theme="light"
+              theme="dark"
             />
           </div>
         </main>
+
         <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />
       </body>
     </html>
