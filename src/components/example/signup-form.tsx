@@ -51,7 +51,7 @@ export default function SignupForm() {
       }),
     });
 
-    toast.success("Huray Your form is submitted", {
+    toast.success(`${userForm.firstname} Thanks you ☺️`, {
       theme: "dark",
     });
     setUserForm({ firstname: "", lastname: "", email: "", query: "" });
