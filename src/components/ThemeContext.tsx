@@ -10,6 +10,7 @@ export default function ThemeContext({ className }: { className?: string }) {
   const [currentWidth, setCurrentWidth] = useState<number>(
     typeof window !== "undefined" ? window.innerWidth : 1024
   );
+  const [mounted, setMounted] = useState<boolean>(false);
 
   const handleResize = () => {
     window.addEventListener("resize", () => {
@@ -19,9 +20,12 @@ export default function ThemeContext({ className }: { className?: string }) {
 
   useEffect(() => {
     handleResize();
+    setMounted(true);
     // clean up functions to reduce the memory leaking
     return window.removeEventListener("resize", handleResize);
   }, []);
+
+  if (!mounted) return false;
 
   return (
     <button
