@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { Bounce, toast } from "react-toastify";
-import { main } from "@/app/utils/nodemailer/mailer";
-import { EmailTemplate } from "../email-template";
+import { useTheme } from "next-themes";
 
 export default function SignupForm() {
+  const { theme } = useTheme();
   const [userForm, setUserForm] = useState({
     firstname: "",
     lastname: "",
@@ -19,7 +19,7 @@ export default function SignupForm() {
     setUserForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: any = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !userForm.firstname ||
@@ -57,7 +57,11 @@ export default function SignupForm() {
     setUserForm({ firstname: "", lastname: "", email: "", query: "" });
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div
+      className={`max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input ${
+        theme === "dark" ? "bg-transparent text-white " : "bg-white"
+      } `}
+    >
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
@@ -138,7 +142,7 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    <div className={cn(`flex flex-col space-y-2 w-full `, className)}>
       {children}
     </div>
   );

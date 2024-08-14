@@ -2,6 +2,7 @@ import React from "react";
 import { Wallpoet, Orbitron } from "next/font/google";
 import { menu } from "@/app/utils/constant";
 import Link from "next/link";
+import ThemeContext from "./ThemeContext";
 
 const wallpoet = Wallpoet({
   weight: "400",
@@ -16,7 +17,9 @@ const orbit = Orbitron({
 const Header = () => {
   return (
     <header className="flex items-center justify-center gap-3 md:block">
-      <div className={`${wallpoet.className} text-4xl md:text-7xl`}>G</div>
+      <Link href={"/"}>
+        <div className={`${wallpoet.className} text-4xl md:text-7xl`}>G</div>
+      </Link>
       <nav className="">
         <ul className="flex md:flex-col gap-2 md:mt-6">
           {menu &&
@@ -31,6 +34,9 @@ const Header = () => {
                 </Link>
               );
             })}
+          <div className="md:mt-3">
+            <ThemeContext />
+          </div>
         </ul>
       </nav>
     </header>

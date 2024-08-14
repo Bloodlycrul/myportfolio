@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
-import "./globals.css";
+import { ThemeProvider } from "next-themes";
+import "../globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -27,23 +27,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="px-7 md:w-[45%] m-auto mt-20 md:flex">
-          <Header />
-          {children}
-          <div className="absolute right-1 top-2">
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              theme="dark"
-            />
-          </div>
-        </main>
+        <ThemeProvider attribute="class">
+          <main className="w-[90%] px-7 md:w-[75%] lg:w-[75%] xl:w-[75%] 2xl:w-[55%] m-auto mt-20 md:flex ">
+            <Header />
+            {children}
+            <div className="absolute right-1 top-2">
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                theme="dark"
+              />
+            </div>
+          </main>
 
-        <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />
+          <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />
+        </ThemeProvider>
       </body>
     </html>
   );

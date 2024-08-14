@@ -19,4 +19,9 @@ export const menu = [
     path: "/work",
     name: "Work",
   },
+  {
+    id: 5,
+    path: "/blog",
+    name: "Blog",
+  },
 ];

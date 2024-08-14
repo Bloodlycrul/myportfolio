@@ -1,4 +1,4 @@
-import SignupForm from "@/components/example/signup-form";
+import SignupForm from "@/components/signup-form";
 import { Orbitron } from "next/font/google";
 import React from "react";
 import { Metadata } from "next";

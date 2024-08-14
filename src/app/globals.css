@@ -31,19 +31,6 @@
     --chart-5: 27 87% 67%;
   }
 
-  .border-border {
-  }
-
-  .bg-background {
-  }
-
-  .text-foreground {
-  }
-
-  .blackWhite {
-    filter: grayscale();
-  }
-
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -74,9 +61,11 @@
 
 @layer base {
   * {
-    @apply border-border;
+    .blackWhite {
+      filter: grayscale();
+      
+    }
   }
   body {
-    @apply bg-background text-foreground;
   }
 }
