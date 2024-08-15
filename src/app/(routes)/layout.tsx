@@ -5,6 +5,7 @@ import "../globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/Header";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
+          <SpeedInsights />
           <main className="w-[90%] px-7 md:w-[75%] lg:w-[75%] xl:w-[75%] 2xl:w-[55%] m-auto mt-20 md:flex ">
             <Header />
             {children}
