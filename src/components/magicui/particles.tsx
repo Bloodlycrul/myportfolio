@@ -135,7 +135,11 @@ const Particles: React.FC<ParticlesProps> = ({
     if (canvasContainerRef.current && canvasRef.current && context.current) {
       circles.current.length = 0;
       canvasSize.current.w = canvasContainerRef.current.offsetWidth;
-      canvasSize.current.h = canvasContainerRef.current.offsetHeight;
+      canvasSize.current.h = Math.max(
+        canvasContainerRef.current.offsetHeight,
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
       canvasRef.current.width = canvasSize.current.w * dpr;
       canvasRef.current.height = canvasSize.current.h * dpr;
       canvasRef.current.style.width = `${canvasSize.current.w}px`;
@@ -272,12 +276,12 @@ const Particles: React.FC<ParticlesProps> = ({
 
   return (
     <div
-      className={className}
+      className={`${className} h-screen`}
       ref={canvasContainerRef}
-      style={{ position: "relative" }}
+      style={{ position: "relative", minHeight: "100vh" }}
       aria-hidden="true"
     >
-      <canvas ref={canvasRef} className="size-full" />
+      <canvas ref={canvasRef} className="w-full h-full" />
       <div
         style={{
           position: "absolute",
