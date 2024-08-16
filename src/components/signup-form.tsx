@@ -40,16 +40,32 @@ export default function SignupForm() {
       });
     }
 
-    await fetch("/api/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName: userForm.firstname,
-        email: userForm.email,
-      }),
-    });
+    try {
+      await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: userForm.firstname,
+          email: userForm.email,
+        }),
+      });
+    } catch (error: any) {
+      return toast.error(`${error.message} - Error to send email`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    } finally {
+      setUserForm({ firstname: "", lastname: "", email: "", query: "" });
+    }
 
     toast.success(`${userForm.firstname} Thanks you ☺️`, {
       theme: "dark",

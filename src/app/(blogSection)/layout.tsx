@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import HeaderBlog from "@/components/blog-UI/HeaderBlog";
 import { ThemeProvider } from "next-themes";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Particles from "@/components/magicui/particles";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <SpeedInsights />
-          <HeaderBlog />
-          <main className="">{children}</main>
-          <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />
-        </ThemeProvider>
+        <Particles className="w-screen">
+          <ThemeProvider>
+            <SpeedInsights />
+            <HeaderBlog />
+            <main className="">{children}</main>
+            <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />
+          </ThemeProvider>
+        </Particles>
       </body>
     </html>
   );

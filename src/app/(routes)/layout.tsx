@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
-          <Particles>
+          <Particles className="w-screen h-screen">
             <SpeedInsights />
             <main className="w-[90%] px-7 md:w-[75%] lg:w-[75%] xl:w-[75%] 2xl:w-[55%] m-auto mt-20 md:flex ">
               <Header />
