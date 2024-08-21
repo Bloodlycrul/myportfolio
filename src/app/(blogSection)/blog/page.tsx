@@ -1,36 +1,63 @@
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Image from "next/image";
 import React from "react";
+import BorderBeam from "@/components/magicui/border-beam";
+import { Wallpoet } from "next/font/google";
+import { blogData } from "@/lib/Constant";
+import SingleBlogContainer from "@/components/SingleBlogContainer";
+
+const wellport = Wallpoet({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const Blog = () => {
   return (
-    <div>
-      <CardContainer className="inter-var">
-        <CardBody className=" relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-          <CardItem translateZ="100" className="w-full mt-4">
-            <Image
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              height="1000"
-              width="1000"
-              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-              alt="thumbnail"
-            />
-          </CardItem>
-          <CardItem
-            translateZ="50"
-            className="text-xl mt-3 font-bold text-neutral-600 dark:text-white"
-          >
-            Make things float in air
-          </CardItem>
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-          >
-            Hover over this card to unleash the power of CSS perspective
-          </CardItem>
-        </CardBody>
-      </CardContainer>
+    <div className="w-2/3 m-auto mt-8">
+      <div className="flex flex-col gap-3 text-center items-center justify-center">
+        <h3 className="text-sm font-bold">The blog</h3>
+        <h1 className={`${wellport.className} text-7xl font-bold capitalize`}>
+          Writings from our team
+        </h1>
+        <p className="mt-2">
+          The latest industry news, interview, technologies, and resources
+        </p>
+      </div>
+      {/* Container */}
+      <div className="mt-6  ">
+        {/* full width Container */}
+
+        <div
+          className="w-full relative overflow-hidden rounded-xl
+            block
+            z-10 h-[600px] bg-[url(https://images.pexels.com/photos/8408553/pexels-photo-8408553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)] bg-cover bg-no-repeat bg-center  before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-black before:via-transparent before:to-transparent before:opacity-90 before:z-[-5]
+             "
+        >
+          <div className="absolute bottom-6 p-4 flex flex-col gap-3">
+            <span>Gaurav Rana 20 Aug 2024</span>
+            <h2 className="text-5xl font-bold">UX review Presentation</h2>
+            <p className="font-light">
+              How do you create compelling presentation that wow your colleagues
+              and impress your manager?
+            </p>
+            {/* pilles */}
+            <div className="flex gap-3">
+              <div className="border px-4 py-2 rounded-full">Design</div>
+              <div className="border px-4 py-2 rounded-full">Developement</div>
+              <div className="border px-4 py-2 rounded-full">Research</div>
+            </div>
+          </div>
+          <BorderBeam borderWidth={4} size={250} duration={12} delay={9} />
+        </div>
+        {/* Three post container */}
+        <div className="">
+          <div className="container mx-auto p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {blogData.map((blog, index) => (
+                <SingleBlogContainer key={index} {...blog} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
