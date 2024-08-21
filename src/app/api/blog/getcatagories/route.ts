@@ -1,6 +1,7 @@
-import prisma from "@/app/database/db";
 import { NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
 export async function GET(req: Request) {
   try {
     const categories = await prisma.categories.findMany();
