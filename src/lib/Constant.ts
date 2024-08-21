@@ -100,7 +100,7 @@ export const blogData = [
   },
   {
     bgUrl:
-      "https://images.pexels.com/photos/3184532/pexels-photo-3184532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/137586/pexels-photo-137586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Sustainable Business Practices",
     description:
       "How to implement sustainable practices in your business for a greener future.",
