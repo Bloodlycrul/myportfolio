@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Toaster } from "@/components/ui/toaster";
 
 import Header from "@/components/Header";
 import Particles from "@/components/magicui/particles";
@@ -30,22 +31,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class">
+          <Toaster />
           <Particles className="w-screen h-screen">
             <SpeedInsights />
             <main className="w-[90%] px-7 md:w-[75%] lg:w-[75%] xl:w-[75%] 2xl:w-[55%] m-auto mt-20 md:flex ">
               <Header />
               {children}
-              <div className="absolute right-1 top-2">
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  theme="dark"
-                />
-              </div>
             </main>
           </Particles>
           <GoogleAnalytics gaId={process.env.GOOGLE_TAG_ID!} />

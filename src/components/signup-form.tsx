@@ -5,9 +5,11 @@ import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { Bounce, toast } from "react-toastify";
 import { useTheme } from "next-themes";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function SignupForm() {
   const { theme } = useTheme();
+  const { toast } = useToast();
   const [userForm, setUserForm] = useState({
     firstname: "",
     lastname: "",
@@ -27,16 +29,10 @@ export default function SignupForm() {
       !userForm.email ||
       !userForm.query
     ) {
-      return toast.error("Please mention all the requried ", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
+      return toast({
+        variant: "destructive",
+        title: "Please mention all the requried",
+        description: "There was a problem with your request.",
       });
     }
 
@@ -52,23 +48,15 @@ export default function SignupForm() {
         }),
       });
     } catch (error: any) {
-      return toast.error(`${error.message} - Error to send email`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
+      return toast({
+        variant: "destructive",
+        title: `${error.message} - Error to send email`,
       });
     } finally {
       setUserForm({ firstname: "", lastname: "", email: "", query: "" });
     }
-
-    toast.success(`${userForm.firstname} Thanks you ☺️`, {
-      theme: "dark",
+    toast({
+      title: `${userForm.firstname} Thanks you ☺️`,
     });
     setUserForm({ firstname: "", lastname: "", email: "", query: "" });
   };
