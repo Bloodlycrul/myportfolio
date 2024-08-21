@@ -28,7 +28,7 @@ model Post {
 model Categories {
   id    String @id @default(uuid())
   title String
-  Post  Post[]
+  Post  Post[] //Add the post here
 }
 
 model Rating {
